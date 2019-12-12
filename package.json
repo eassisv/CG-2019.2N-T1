@@ -1,0 +1,21 @@
+{
+  "name": "CG-2019.2N-T1",
+  "version": "1.0.0",
+  "private": true,
+  "repository": "git@github.com:eassisv/CG-2019.2N-T1.git",
+  "author": "Everton Assis <eassis.vieira@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "typescript": "^3.7.3",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
+  },
+  "dependencies": {
+    "three": "^0.111.0"
+  }
+}
