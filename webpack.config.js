@@ -12,6 +12,7 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
+    writeToDisk: true,
     filename: 'js/main.js',
     publicPath: '/',
     hot: true,
@@ -24,7 +25,7 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.(jpg|bin|mtl|obj|gltf|glb)$/,
+        test: /\.(jpg|png|bin|mtl|obj|gltf|glb|fbx)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]',
@@ -33,9 +34,7 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    // new CopyPlugin([{from: './assets/models', to: './dist/assets/models'}])
-  ],
+  // plugins: [new CopyPlugin([{from: './assets/models', to: './assets/models'}])],
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.bin']
   }
