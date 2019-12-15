@@ -2,14 +2,16 @@ const path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.ts',
+  entry: './src/index.js',
   output: {
+    path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
-    path: path.resolve(__dirname, 'dist')
+    publicPath: '/'
   },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
+    writeToDisk: true,
     hot: true,
     port: 8080
   },
@@ -18,6 +20,14 @@ module.exports = {
       {
         test: /\.ts(x)?$/,
         exclude: /node_modules/
+      },
+      {
+        test: /\.(jpg|bin|gltf|mtl)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: 'assets'
+        }
       }
     ]
   },
