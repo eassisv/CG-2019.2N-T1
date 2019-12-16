@@ -31,15 +31,12 @@ let golbat, zubat;
   group.position.z = 200;
   scene.add(group);
   setLight();
-  loadPokeball();
-  loadGlobo();
+  // loadPokeball();
+  // loadGlobo();
   loadGolbats();
-  loadZubats();
+  // loadZubats();
 
   loadText();
-
-  loadGolbats();
-  loadZubats();
 
   initEvents();
   animate();
@@ -81,8 +78,11 @@ function loadGolbats() {
   const loader = new FBXLoader();
   loader.load(fbxGolbat, fbx => {
     golbat = fbx;
-    golbat.scale.set(0.02, 0.02, 0.02);
-    golbat.position.z = 500;
+    golbat.scale.set(0.1, 0.1, 0.1);
+    golbat.position.z = 600;
+
+    golbat.rotation.set(0, 0, 1.6);
+
     group.add(golbat);
   });
 }
@@ -92,32 +92,12 @@ function loadZubats() {
   loader.load(fbxZubat, fbx => {
     zubat = fbx;
     zubat.scale.set(0.02, 0.02, 0.02);
-    zubat.position.z = 500;
+    zubat.position.z = 100;
     group.add(zubat);
   });
 }
 
 function loadText() {}
-
-function loadGolbats() {
-  const loader = new FBXLoader();
-  loader.load(fbxGolbat, fbx => {
-    golbat = fbx;
-    golbat.scale.set(0.02, 0.02, 0.02);
-    golbat.position.z = 500;
-    group.add(golbat);
-  });
-}
-
-function loadZubats() {
-  const loader = new FBXLoader();
-  loader.load(fbxZubat, fbx => {
-    zubat = fbx;
-    zubat.scale.set(0.02, 0.02, 0.02);
-    zubat.position.z = 500;
-    group.add(zubat);
-  });
-}
 
 function onWindowResize() {
   camera.aspect = window.innerWidth / window.innerHeight;
@@ -136,7 +116,9 @@ function initEvents() {
   );
 }
 
-function render() {}
+function render() {
+  // group.rotation.y += 0.05;
+}
 
 function animate() {
   requestAnimationFrame(animate);
