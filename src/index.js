@@ -3,7 +3,7 @@ import {FBXLoader} from 'three/examples/jsm/loaders/FBXLoader';
 import fbxGlobo from '../assets/models/globo/globo.fbx';
 import fbxPokeball from '../assets/models/pokeball/pokeball.fbx';
 import fbxGolbat from '../assets/models/golbat/golbat.fbx';
-import fbxZubat from '../assets/models/zubat/zubat.fbx';
+import fontGentilis from 'three/examples/fonts/gentilis_regular.typeface.json';
 
 let scene, camera, renderer, light;
 let pokeball, globo, group;
@@ -66,7 +66,8 @@ const golbatsPositions = [
   loadPokeball();
   loadGlobo();
   loadGolbats();
-  // loadZubats();
+  loadText();
+  loadMusic();
 
   flag = true;
   initEvents();
@@ -87,6 +88,26 @@ function setLight() {
   dirLight.position.set(0, 0, 900);
   dirLight.target = group;
   scene.add(dirLight, light, obj);
+}
+
+function loadText() {
+  var loader = new THREE.FontLoader();
+  loader.load('three/examples/fonts/gentilis_regular.typeface.json', function(
+    font
+  ) {
+    var geometry = new THREE.TextBufferGeometry('Plantão', {
+      font: font,
+      size: 800,
+      height: 5,
+      curveSegments: 12,
+      bevelEnabled: true,
+      bevelThickness: 10,
+      bevelSize: 8,
+      bevelOffset: 0,
+      bevelSegments: 5
+    });
+    scene.add(geometry);
+  });
 }
 
 function loadGlobo() {
@@ -115,6 +136,22 @@ function loadPokeball() {
   );
 }
 
+function loadMusic() {
+  var listener = new THREE.AudioListener();
+  camera.add(listener);
+
+  var sound = new THREE.Audio(listener);
+
+  var audioLoader = new THREE.AudioLoader();
+  audioLoader.load('sounds/ambient.ogg', function(buffer) {
+    sound.setBuffer(buffer);
+    sound.setLoop(true);
+    sound.setVolume(0.5);
+    sound.play();
+  });
+  scene.add(audioLoader);
+}
+
 function loadGolbats() {
   const loader = new FBXLoader();
   loader.load(fbxGolbat, fbx => {
@@ -130,20 +167,6 @@ function loadGolbats() {
     group.add(golbats);
   });
 }
-
-// function loadZubats() {
-//   const loader = new FBXLoader();
-//   loader.load(fbxZubat, fbx => {
-//     zubatPositions.forEach(pos => {
-//       const zubat = fbx.clone();
-//       zubat.scale.set(0.05, 0.05, 0.05);
-//       zubat.rotation.set(3.2, 0.5, 1.6);
-//       zubat.position.set(...pos);
-//       zubats.add(zubat);
-//     });
-//     group.add(zubats);
-//   });
-// }
 
 function onWindowResize() {
   camera.aspect = window.innerWidth / window.innerHeight;
