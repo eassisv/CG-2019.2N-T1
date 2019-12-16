@@ -11,3 +11,6 @@
 
 ## Instruções
  - Para reiniciar a vinheta, pressione r.
+ 
+## Link para acesso
+[https://eassisv.github.io/CG-2019.2N-T1/](https://eassisv.github.io/CG-2019.2N-T1/)
