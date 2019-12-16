@@ -35,6 +35,7 @@ let golbat, zubat;
   loadGlobo();
   loadGolbats();
   loadZubats();
+  loadText();
 
   initEvents();
   animate();
@@ -90,6 +91,20 @@ function loadZubats() {
     zubat.position.z = 500;
     group.add(zubat);
   });
+
+  function loadText() {}
+
+  // const mtlLoader = new MTLLoader();
+  // mtlLoader.load(mtlPokemon, mtl => {
+  //   const objLoader = new OBJLoader2();
+  //   const materials = new MtlObjBridge.addMaterialsFromMtlLoader(mtl);
+  //   objLoader.addMaterials(materials);
+  //   objLoader.load(objPokemon, obj => {
+  //     pokeball = obj;
+  //     console.log(pokeball);
+  //     group.add(pokeball);
+  //   });
+  // });
 }
 
 function onWindowResize() {

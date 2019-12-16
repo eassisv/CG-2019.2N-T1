@@ -63,7 +63,11 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
+<<<<<<< HEAD
 /******/ 	var hotCurrentHash = "737510afa9b75b2e0b7b";
+=======
+/******/ 	var hotCurrentHash = "826952b18ac331e75ac4";
+>>>>>>> bcf006949d83436728aeda4191b0e8a356668ad1
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -796,14 +800,21 @@
 /************************************************************************/
 /******/ ({
 
+<<<<<<< HEAD
 /***/ "./assets/models/globo/scene.glb":
 /*!***************************************!*\
   !*** ./assets/models/globo/scene.glb ***!
+=======
+/***/ "./assets/models/globo/globo.fbx":
+/*!***************************************!*\
+  !*** ./assets/models/globo/globo.fbx ***!
+>>>>>>> bcf006949d83436728aeda4191b0e8a356668ad1
   \***************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+<<<<<<< HEAD
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (__webpack_require__.p + \"assets/models/scene.glb\");\n\n//# sourceURL=webpack:///./assets/models/globo/scene.glb?");
 
 /***/ }),
@@ -812,11 +823,25 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ 
 /*!*************************************************!*\
   !*** ./assets/models/pokeball-fbx/pokeball.fbx ***!
   \*************************************************/
+=======
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (__webpack_require__.p + \"assets/models/globo.fbx\");\n\n//# sourceURL=webpack:///./assets/models/globo/globo.fbx?");
+
+/***/ }),
+
+/***/ "./assets/models/pokeball/pokeball.fbx":
+/*!*********************************************!*\
+  !*** ./assets/models/pokeball/pokeball.fbx ***!
+  \*********************************************/
+>>>>>>> bcf006949d83436728aeda4191b0e8a356668ad1
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+<<<<<<< HEAD
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (__webpack_require__.p + \"assets/models/pokeball.fbx\");\n\n//# sourceURL=webpack:///./assets/models/pokeball-fbx/pokeball.fbx?");
+=======
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = (__webpack_require__.p + \"assets/models/pokeball.fbx\");\n\n//# sourceURL=webpack:///./assets/models/pokeball/pokeball.fbx?");
+>>>>>>> bcf006949d83436728aeda4191b0e8a356668ad1
 
 /***/ }),
 
@@ -1017,6 +1042,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ "./node_modules/three/examples/jsm/loaders/GLTFLoader.js":
 /*!***************************************************************!*\
   !*** ./node_modules/three/examples/jsm/loaders/GLTFLoader.js ***!
@@ -1041,6 +1067,8 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 /***/ }),
 
+=======
+>>>>>>> bcf006949d83436728aeda4191b0e8a356668ad1
 /***/ "./node_modules/url/url.js":
 /*!*********************************!*\
   !*** ./node_modules/url/url.js ***!
@@ -1294,7 +1322,11 @@ eval("var logLevel = \"info\";\n\nfunction dummy() {}\n\nfunction shouldLog(leve
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+<<<<<<< HEAD
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n/* harmony import */ var three_examples_jsm_loaders_GLTFLoader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! three/examples/jsm/loaders/GLTFLoader */ \"./node_modules/three/examples/jsm/loaders/GLTFLoader.js\");\n/* harmony import */ var three_examples_jsm_loaders_FBXLoader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! three/examples/jsm/loaders/FBXLoader */ \"./node_modules/three/examples/jsm/loaders/FBXLoader.js\");\n/* harmony import */ var three_examples_jsm_loaders_TGALoader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! three/examples/jsm/loaders/TGALoader */ \"./node_modules/three/examples/jsm/loaders/TGALoader.js\");\n/* harmony import */ var _assets_models_globo_scene_glb__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../assets/models/globo/scene.glb */ \"./assets/models/globo/scene.glb\");\n/* harmony import */ var _assets_models_pokeball_fbx_pokeball_fbx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../assets/models/pokeball-fbx/pokeball.fbx */ \"./assets/models/pokeball-fbx/pokeball.fbx\");\n\n\n\n\n\n\n\nlet scene, camera, renderer, light;\nlet pokeball, globo, group;\n\n(() => {\n  three__WEBPACK_IMPORTED_MODULE_0__[\"Loader\"].Handlers.add(/\\.tga$/i, new three_examples_jsm_loaders_TGALoader__WEBPACK_IMPORTED_MODULE_3__[\"TGALoader\"]());\n\n  scene = new three__WEBPACK_IMPORTED_MODULE_0__[\"Scene\"]();\n  // scene.overrideMaterial = new THREE.MeshBasicMaterial();\n  camera = new three__WEBPACK_IMPORTED_MODULE_0__[\"PerspectiveCamera\"](\n    75,\n    window.innerWidth / window.innerHeight,\n    0.1,\n    1000\n  );\n  camera.position.z = 900;\n  scene.add(camera);\n\n  renderer = new three__WEBPACK_IMPORTED_MODULE_0__[\"WebGLRenderer\"]({alpha: 1});\n  renderer.setSize(window.innerWidth, window.innerHeight);\n  renderer.gammaOutput = true;\n  renderer.gammaFactor = 2.2;\n  document.body.appendChild(renderer.domElement);\n  window.addEventListener('resize', onWindowResize);\n\n  group = new three__WEBPACK_IMPORTED_MODULE_0__[\"Group\"]();\n  scene.add(group);\n  setLight();\n  loadPokeball();\n  // loadGlobo();\n\n  initEvents();\n  animate();\n})();\n\nfunction setLight() {\n  light = new three__WEBPACK_IMPORTED_MODULE_0__[\"DirectionalLight\"](0xffffff, 2.5);\n  light.position.set(camera.position.x, camera.position.y, camera.position.z);\n  light.target = group;\n  scene.add(light);\n}\n\nfunction loadGlobo() {\n  const loader = new three_examples_jsm_loaders_GLTFLoader__WEBPACK_IMPORTED_MODULE_1__[\"GLTFLoader\"]();\n  loader.load(_assets_models_globo_scene_glb__WEBPACK_IMPORTED_MODULE_4__[\"default\"], gltf => {\n    console.log('globo:', gltf);\n    globo = gltf.scene;\n    globo.scale.set(10, 10, 10);\n    group.add(globo, new three__WEBPACK_IMPORTED_MODULE_0__[\"PointLight\"](0xbb00ff));\n  });\n}\n\nfunction loadPokeball() {\n  const loader = new three_examples_jsm_loaders_FBXLoader__WEBPACK_IMPORTED_MODULE_2__[\"FBXLoader\"]();\n  loader.load(_assets_models_pokeball_fbx_pokeball_fbx__WEBPACK_IMPORTED_MODULE_5__[\"default\"], fbx => {\n    pokeball = fbx;\n    console.log('pokeball:', pokeball);\n    // pokeball.scale.set(0.05, 0.05, 0.05);\n    group.add(pokeball);\n  });\n}\n\nfunction onWindowResize() {\n  camera.aspect = window.innerWidth / window.innerHeight;\n  camera.updateProjectionMatrix();\n  renderer.setSize(window.innerWidth, window.innerHeight);\n}\n\nfunction initEvents() {\n  document.addEventListener(\n    'wheel',\n    e => {\n      camera.zoom += e.deltaY * 0.01;\n      camera.updateProjectionMatrix();\n    },\n    false\n  );\n}\n\nfunction render() {}\n\nfunction animate() {\n  requestAnimationFrame(animate);\n  render();\n  renderer.render(scene, camera);\n}\n\n\n//# sourceURL=webpack:///./src/index.js?");
+=======
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ \"./node_modules/three/build/three.module.js\");\n/* harmony import */ var three_examples_jsm_loaders_FBXLoader__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! three/examples/jsm/loaders/FBXLoader */ \"./node_modules/three/examples/jsm/loaders/FBXLoader.js\");\n/* harmony import */ var _assets_models_globo_globo_fbx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../assets/models/globo/globo.fbx */ \"./assets/models/globo/globo.fbx\");\n/* harmony import */ var _assets_models_pokeball_pokeball_fbx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../assets/models/pokeball/pokeball.fbx */ \"./assets/models/pokeball/pokeball.fbx\");\n\n\n\n\n\nlet scene, camera, renderer, light;\nlet pokeball, globo, group;\n\n(() => {\n  scene = new three__WEBPACK_IMPORTED_MODULE_0__[\"Scene\"]();\n  camera = new three__WEBPACK_IMPORTED_MODULE_0__[\"PerspectiveCamera\"](\n    75,\n    window.innerWidth / window.innerHeight,\n    0.1,\n    1000\n  );\n  camera.position.z = 900;\n  scene.add(camera);\n\n  renderer = new three__WEBPACK_IMPORTED_MODULE_0__[\"WebGLRenderer\"]({alpha: 1});\n  renderer.setSize(window.innerWidth, window.innerHeight);\n  renderer.gammaOutput = true;\n  renderer.gammaFactor = 2.2;\n  document.body.appendChild(renderer.domElement);\n  window.addEventListener('resize', onWindowResize);\n\n  group = new three__WEBPACK_IMPORTED_MODULE_0__[\"Group\"]();\n  scene.add(group);\n  setLight();\n  loadPokeball();\n  loadGlobo();\n  loadText();\n\n  initEvents();\n  animate();\n})();\n\nfunction setLight() {\n  light = new three__WEBPACK_IMPORTED_MODULE_0__[\"DirectionalLight\"](0xffffff, 1);\n  light.position.set(camera.position.x, camera.position.y, camera.position.z);\n  light.target = group;\n  scene.add(light);\n}\n\nfunction loadGlobo() {\n  const loader = new three_examples_jsm_loaders_FBXLoader__WEBPACK_IMPORTED_MODULE_1__[\"FBXLoader\"]();\n  loader.load(_assets_models_globo_globo_fbx__WEBPACK_IMPORTED_MODULE_2__[\"default\"], fbx => {\n    console.log('globo:', fbx);\n    globo = fbx;\n    globo.scale.set(0.4, 0.4, 0.4);\n    globo.position.z = 200;\n    group.add(globo); //, new THREE.PointLight(0xbb00ff));\n  });\n}\n\nfunction loadPokeball() {\n  const loader = new three_examples_jsm_loaders_FBXLoader__WEBPACK_IMPORTED_MODULE_1__[\"FBXLoader\"]();\n  loader.load(\n    _assets_models_pokeball_pokeball_fbx__WEBPACK_IMPORTED_MODULE_3__[\"default\"],\n    fbx => {\n      pokeball = fbx;\n      pokeball.scale.set(1.2, 1.2, 1.2);\n      console.log(pokeball);\n      group.add(pokeball);\n    },\n    undefined,\n    error => {\n      console.log(error);\n    }\n  );\n\n  function loadText(){\n    \n  }\n\n  // const mtlLoader = new MTLLoader();\n  // mtlLoader.load(mtlPokemon, mtl => {\n  //   const objLoader = new OBJLoader2();\n  //   const materials = new MtlObjBridge.addMaterialsFromMtlLoader(mtl);\n  //   objLoader.addMaterials(materials);\n  //   objLoader.load(objPokemon, obj => {\n  //     pokeball = obj;\n  //     console.log(pokeball);\n  //     group.add(pokeball);\n  //   });\n  // });\n}\n\nfunction onWindowResize() {\n  camera.aspect = window.innerWidth / window.innerHeight;\n  camera.updateProjectionMatrix();\n  renderer.setSize(window.innerWidth, window.innerHeight);\n}\n\nfunction initEvents() {\n  document.addEventListener(\n    'wheel',\n    e => {\n      camera.zoom += e.deltaY * 0.01;\n      camera.updateProjectionMatrix();\n    },\n    false\n  );\n}\n\nfunction render() {}\n\nfunction animate() {\n  requestAnimationFrame(animate);\n  render();\n  renderer.render(scene, camera);\n}\n\n\n//# sourceURL=webpack:///./src/index.js?");
+>>>>>>> bcf006949d83436728aeda4191b0e8a356668ad1
 
 /***/ }),
 
@@ -1305,7 +1337,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var thre
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 eval("__webpack_require__(/*! /home/everton/code/CG-2019.2N-T1/node_modules/webpack-dev-server/client/index.js?http://localhost:8080 */\"./node_modules/webpack-dev-server/client/index.js?http://localhost:8080\");\n__webpack_require__(/*! /home/everton/code/CG-2019.2N-T1/node_modules/webpack/hot/dev-server.js */\"./node_modules/webpack/hot/dev-server.js\");\nmodule.exports = __webpack_require__(/*! ./src/index.js */\"./src/index.js\");\n\n\n//# sourceURL=webpack:///multi_(webpack)-dev-server/client?");
+=======
+eval("__webpack_require__(/*! /Users/sabrinamoczulski/Desktop/CG-2019.2N-T1/CG-2019.2N-T1/node_modules/webpack-dev-server/client/index.js?http://localhost:8080 */\"./node_modules/webpack-dev-server/client/index.js?http://localhost:8080\");\n__webpack_require__(/*! /Users/sabrinamoczulski/Desktop/CG-2019.2N-T1/CG-2019.2N-T1/node_modules/webpack/hot/dev-server.js */\"./node_modules/webpack/hot/dev-server.js\");\nmodule.exports = __webpack_require__(/*! ./src/index.js */\"./src/index.js\");\n\n\n//# sourceURL=webpack:///multi_(webpack)-dev-server/client?");
+>>>>>>> bcf006949d83436728aeda4191b0e8a356668ad1
 
 /***/ })
 
