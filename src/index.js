@@ -29,6 +29,7 @@ let pokeball, globo, group;
   setLight();
   loadPokeball();
   loadGlobo();
+  loadText();
 
   initEvents();
   animate();
@@ -67,6 +68,11 @@ function loadPokeball() {
       console.log(error);
     }
   );
+
+  function loadText(){
+    
+  }
+
   // const mtlLoader = new MTLLoader();
   // mtlLoader.load(mtlPokemon, mtl => {
   //   const objLoader = new OBJLoader2();
