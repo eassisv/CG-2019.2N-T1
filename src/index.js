@@ -86,6 +86,12 @@ function loadPokeball() {
   );
 }
 
+const golbatsPositions = [
+  [-60, 0, 220],
+  [40, 0, 210],
+  [140, 0, 200],
+  [240, 0, 190]
+];
 function loadGolbats() {
   const loader = new FBXLoader();
   loader.load(fbxGolbat, fbx => {
@@ -117,20 +123,29 @@ function loadGolbats() {
     oto = golbat.clone();
     oto.position.set(240, 0, 190);
     group.add(oto);
+    golbat.rotation.set(3.2, 0.5, 1.6);
+
+    golbat.position.set(-60, 0, 220);
+
     group.add(golbat);
   });
 }
 
+const zubatPositions = [
+  [-60, 45, 215],
+  [-60, -45, 225],
+  [-10, 0, 215],
+  [90, 0, 205],
+  [190, 0, 195]
+];
 function loadZubats() {
   const loader = new FBXLoader();
   loader.load(fbxZubat, fbx => {
     zubat = fbx;
     zubat.scale.set(0.05, 0.05, 0.05);
-    zubat.rotation.set(3.2, 0, 1.6);
-    zubat.position.set(-60, 45, 215);
+    zubat.rotation.set(3.2, 0.5, 1.6);
 
-    let ota = zubat.clone();
-    ota.position.set(-10, 0, 235);
+    zubat.position.set(-60, -45, 215);
 
     group.add(zubat);
 
