@@ -10,4 +10,4 @@
 
 
 ## Instruções
- - Para reiniciar a vinheta, pressione R.
+ - Para reiniciar a vinheta, pressione r.
