@@ -60,7 +60,7 @@ const golbatsPositions = [
   loadGlobo();
   loadGolbats();
   loadText();
-  // loadMusic();
+  loadSound();
 
   flag = true;
   initEvents();
@@ -81,6 +81,22 @@ function setLight() {
   dirLight.position.set(0, 0, 900);
   dirLight.target = group;
   scene.add(dirLight, light, obj);
+}
+
+function loadSound(){
+  var listener = new THREE.AudioListener();
+  camera.add( listener );
+
+  var sound = new THREE.Audio( listener );
+
+  var audioLoader = new THREE.AudioLoader();
+  audioLoader.load( '.assets/sounds/sound.ogg', function( buffer ) {
+    sound.setBuffer( buffer );
+    sound.setLoop( true );
+    sound.setVolume(2);
+    sound.play();
+});
+  scene.add(audioLoader);
 }
 
 function loadText() {
