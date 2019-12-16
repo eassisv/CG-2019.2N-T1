@@ -7,3 +7,7 @@
 
 ## Objetivo:
  - O objetivo do trabalho é a criação da vinheta do plantão de notícias da Rede Globo substituindo alguns ícones por Pokémons.
+
+
+## Instruções
+ - Para reiniciar a vinheta, pressione R.
