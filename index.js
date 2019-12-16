@@ -5,6 +5,8 @@ let scene, camera, renderer, light;
 let pokeball, globo, group;
 let golbats = [];
 let flag = true;
+let roll = false;
+let rollGolbat = false;
 
 const golbatsPositions = [
   [-60, 0, 220],
@@ -187,6 +189,10 @@ function initEvents() {
   document.addEventListener('keypress', e => {
     if (e.key === 'r') {
       reinit();
+    } else if (e.key === 'e') {
+      roll = !roll;
+    } else if (e.key === 'w') {
+      rollGolbat = !rollGolbat;
     }
   });
 }
@@ -207,6 +213,14 @@ function render() {
     }
     if (camera.position.z < 800) camera.position.z += 10;
     if (camera.position.x < 0) camera.position.x += 2;
+  }
+  if (roll) {
+    pokeball.rotation.y += 0.5;
+  }
+  if (rollGolbat) {
+    golbats.forEach(child => {
+      child.rotation.x += 0.3;
+    });
   }
 }
 
