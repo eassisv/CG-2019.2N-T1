@@ -64,7 +64,6 @@ function setLight() {
 
 function loadText(){
   var loader = new THREE.FontLoader();
-  var textTrab = new THREE.Object3D();
   loader.load( './three/examples/fonts/gentilis_regular.typeface.json', function ( font ) {
   
     var geometry = new THREE.TextBufferGeometry( 'Plantão', {
@@ -78,8 +77,6 @@ function loadText(){
       bevelOffset: 0,
       bevelSegments: 5
     } );
-    var textMaterial = new THREE.MeshBasicMaterial( { color: 0x000000, overdraw: true } );
-    textTrab = new THREE.Mesh( geometry, textMaterial );
     scene.add(geometry);
   } );
 }
