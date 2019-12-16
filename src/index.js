@@ -4,6 +4,7 @@ import fbxGlobo from '../assets/models/globo/globo.fbx';
 import fbxPokeball from '../assets/models/pokeball/pokeball.fbx';
 import fbxGolbat from '../assets/models/golbat/golbat.fbx';
 import fbxZubat from '../assets/models/zubat/zubat.fbx';
+import fontGentilis from 'three/examples/fonts/gentilis_regular.typeface.json';
 
 let scene, camera, renderer, light;
 let pokeball, globo, group;
@@ -63,10 +64,10 @@ function setLight() {
 
 function loadText(){
   var loader = new THREE.FontLoader();
-  
+  var textTrab = new THREE.Object3D();
   loader.load( './three/examples/fonts/gentilis_regular.typeface.json', function ( font ) {
   
-    var geometry = new THREE.TextBufferGeometry( 'Hello three.js!', {
+    var geometry = new THREE.TextBufferGeometry( 'Plantão', {
       font: font,
       size: 800,
       height: 5,
@@ -77,6 +78,8 @@ function loadText(){
       bevelOffset: 0,
       bevelSegments: 5
     } );
+    var textMaterial = new THREE.MeshBasicMaterial( { color: 0x000000, overdraw: true } );
+    textTrab = new THREE.Mesh( geometry, textMaterial );
     scene.add(geometry);
   } );
 }
