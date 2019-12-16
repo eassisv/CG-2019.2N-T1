@@ -4,6 +4,7 @@ import fbxGlobo from '../assets/models/globo/globo.fbx';
 import fbxPokeball from '../assets/models/pokeball/pokeball.fbx';
 import fbxGolbat from '../assets/models/golbat/golbat.fbx';
 import fbxZubat from '../assets/models/zubat/zubat.fbx';
+import fontGentilis from '../assets/fonts/gentilis_regular.typeface';
 
 let scene, camera, renderer, light;
 let pokeball, globo, group;
@@ -95,6 +96,25 @@ function loadZubats() {
     zubat.position.z = 100;
     group.add(zubat);
   });
+}
+
+function loadText() {
+  const loader = new THREE.FontLoader();
+
+  loader.load(fontGentilis,  font => {
+    const geometry = new THREE.TextGeometry( 'Hello three.js!', {
+      font: font,
+      size: 80,
+      height: 5,
+      curveSegments: 12,
+      bevelEnabled: true,
+      bevelThickness: 10,
+      bevelSize: 8,
+      bevelOffset: 0,
+      bevelSegments: 5,
+    });
+    scene.add(geometry);
+  })
 }
 
 function loadText() {}
