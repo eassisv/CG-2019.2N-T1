@@ -10,6 +10,10 @@
 
 
 ## Instruções
- - Para reiniciar a vinheta, pressione R.
+ - Para reiniciar a vinheta, pressione r.
  - Para girar a pokebola, pressione e.
  - Para girar os Golbats, pressione w.
+
+ 
+## Link para acesso
+[https://eassisv.github.io/CG-2019.2N-T1/](https://eassisv.github.io/CG-2019.2N-T1/)
