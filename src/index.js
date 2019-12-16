@@ -33,17 +33,13 @@ let golbat, zubat;
   setLight();
   loadPokeball();
   loadGlobo();
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
   loadGolbats();
   loadZubats();
->>>>>>> 2065581ee73751a039ecb2d641b90f1183121c3a
+
   loadText();
-=======
+
   loadGolbats();
   loadZubats();
->>>>>>> Update zubat and golbat models
 
   initEvents();
   animate();
@@ -79,9 +75,6 @@ function loadPokeball() {
       console.log(error);
     }
   );
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 }
 
 function loadGolbats() {
@@ -102,23 +95,9 @@ function loadZubats() {
     zubat.position.z = 500;
     group.add(zubat);
   });
->>>>>>> 2065581ee73751a039ecb2d641b90f1183121c3a
-
-  function loadText() {}
-
-  // const mtlLoader = new MTLLoader();
-  // mtlLoader.load(mtlPokemon, mtl => {
-  //   const objLoader = new OBJLoader2();
-  //   const materials = new MtlObjBridge.addMaterialsFromMtlLoader(mtl);
-  //   objLoader.addMaterials(materials);
-  //   objLoader.load(objPokemon, obj => {
-  //     pokeball = obj;
-  //     console.log(pokeball);
-  //     group.add(pokeball);
-  //   });
-  // });
-=======
 }
+
+function loadText() {}
 
 function loadGolbats() {
   const loader = new FBXLoader();
@@ -138,7 +117,6 @@ function loadZubats() {
     zubat.position.z = 500;
     group.add(zubat);
   });
->>>>>>> Update zubat and golbat models
 }
 
 function onWindowResize() {
