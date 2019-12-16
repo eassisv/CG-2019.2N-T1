@@ -59,7 +59,8 @@ const golbatsPositions = [
   loadPokeball();
   loadGlobo();
   loadGolbats();
-  loadMusic();
+  loadText();
+  // loadMusic();
 
   flag = true;
   initEvents();
@@ -82,31 +83,31 @@ function setLight() {
   scene.add(dirLight, light, obj);
 }
 
-// function loadText() {
-//   var loader = new THREE.FontLoader();
-//   loader.load('three/examples/fonts/helvetiker_regular.typeface.json', font => {
-//     console.log('font', font);
-//     var geometry = new THREE.TextBufferGeometry(
-//       'PLANTÃO',
-//       {
-//         font: font,
-//         size: 800,
-//         height: 5,
-//         curveSegments: 12,
-//         bevelEnabled: true,
-//         bevelThickness: 10,
-//         bevelSize: 8,
-//         bevelOffset: 0,
-//         bevelSegments: 5
-//       },
-//       undefined,
-//       error => {
-//         console.log('erro na font');
-//       }
-//     );
-//     scene.add(geometry);
-//   });
-// }
+function loadText() {
+  const loader = new THREE.FontLoader();
+  loader.load(
+    './three.js-master/examples/fonts/helvetiker_regular.typeface.json',
+    font => {
+      console.log('font', font);
+      const geometry = new THREE.TextBufferGeometry('POKETAO', {
+        font: font,
+        size: 120,
+        height: 5,
+        curveSegments: 12,
+        bevelEnabled: true,
+        bevelThickness: 10,
+        bevelSize: 8,
+        bevelOffset: 0,
+        bevelSegments: 5
+      });
+      const material = new THREE.MeshPhongMaterial({color: 0xf7f7f7});
+      const text = new THREE.Mesh(geometry, material);
+      text.position.set(-280, 210, 200);
+      text.rotation.y = 0.4;
+      scene.add(text);
+    }
+  );
+}
 
 function loadGlobo() {
   const loader = new FBXLoader();
@@ -131,22 +132,6 @@ function loadPokeball() {
       console.log(error);
     }
   );
-}
-
-function loadMusic() {
-  var listener = new THREE.AudioListener();
-  camera.add(listener);
-
-  var sound = new THREE.Audio(listener);
-
-  var audioLoader = new THREE.AudioLoader();
-  audioLoader.load('./assets/sounds/sound.ogg', function(buffer) {
-    sound.setBuffer(buffer);
-    sound.setLoop(true);
-    sound.setVolume(0.5);
-    sound.play();
-  });
-  scene.add(audioLoader);
 }
 
 function loadGolbats() {
@@ -183,9 +168,13 @@ function initEvents() {
 
 function render() {
   if (flag && group.rotation.y > -1) {
-    group.rotation.y -= 0.005;
+    group.rotation.y -= 0.5;
   } else {
     flag = false;
+    console.log(golbats.visible);
+    if (golbats.visible) {
+      golbats.visible = false;
+    }
     if (group.rotation.y < 0) group.rotation.y += 0.03;
     if (camera.rotation.y < 0) {
       camera.rotation.y += 0.02;
