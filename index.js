@@ -79,19 +79,12 @@ function reinitGolbats() {
 }
 
 function setLight() {
-  light = new THREE.DirectionalLight(0xffffff, 0.8);
+  light = new THREE.PointLight(0xffffff, 0.8);
   light.position.set(camera.position.x, camera.position.y, camera.position.z);
-  const obj = new THREE.Object3D();
-  obj.position.set(
-    camera.position.x + 100,
-    camera.position.y,
-    camera.position.z - 25
-  );
-  obj.visible = false;
   const dirLight = new THREE.DirectionalLight(0xffffff, 0.2);
   dirLight.position.set(0, 0, 900);
   dirLight.target = group;
-  scene.add(dirLight, light, obj);
+  scene.add(dirLight, light);
 }
 
 function loadSound() {
@@ -158,7 +151,7 @@ function loadGolbats() {
     golbatsPositions.forEach(pos => {
       const golbat = fbx.clone();
       golbat.scale.set(0.05, 0.05, 0.05);
-      golbat.rotation.set(3.2, 0.5, 1.6);
+      golbat.rotation.set(3, -0.7, 1.6);
       golbat.position.set(...pos);
       group.add(golbat);
       golbats.push(golbat);
@@ -199,6 +192,7 @@ function initEvents() {
 }
 
 function render() {
+  light.position.set(camera.position.x, camera.position.y, camera.position.z);
   if (flag && group.rotation.y > -1) {
     group.rotation.y -= 0.004;
   } else {
