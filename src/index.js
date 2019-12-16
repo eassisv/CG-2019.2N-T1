@@ -3,7 +3,7 @@ import {FBXLoader} from 'three/examples/jsm/loaders/FBXLoader';
 import fbxGlobo from '../assets/models/globo/globo.fbx';
 import fbxPokeball from '../assets/models/pokeball/pokeball.fbx';
 import fbxGolbat from '../assets/models/golbat/golbat.fbx';
-import fontGentilis from 'three/examples/fonts/gentilis_regular.typeface.json';
+import fontGentilis from '../assets/fonts/gentilis_regular.typeface.json';
 
 let scene, camera, renderer, light;
 let pokeball, globo, group;
@@ -35,6 +35,7 @@ const golbatsPositions = [
 ];
 
 (() => {
+  console.log(fontGentilis);
   scene = new THREE.Scene();
   camera = new THREE.PerspectiveCamera(
     75,
@@ -55,12 +56,12 @@ const golbatsPositions = [
   window.addEventListener('resize', onWindowResize);
 
   golbats = new THREE.Group();
-  zubats = new THREE.Group();
+  // zubats = new THREE.Group();
   group = new THREE.Group();
   group.position.z = 200;
   group.rotation.y = 0.3;
-  scene.add(golbats);
-  scene.add(zubats);
+  // scene.add(golbats);
+  // scene.add(zubats);
   scene.add(group);
   setLight();
   loadPokeball();
@@ -92,20 +93,26 @@ function setLight() {
 
 function loadText() {
   var loader = new THREE.FontLoader();
-  loader.load('three/examples/fonts/gentilis_regular.typeface.json', function(
-    font
-  ) {
-    var geometry = new THREE.TextBufferGeometry('Plantão', {
-      font: font,
-      size: 800,
-      height: 5,
-      curveSegments: 12,
-      bevelEnabled: true,
-      bevelThickness: 10,
-      bevelSize: 8,
-      bevelOffset: 0,
-      bevelSegments: 5
-    });
+  loader.load('three/examples/fonts/helvetiker_regular.typeface.json', font => {
+    console.log('font', font);
+    var geometry = new THREE.TextBufferGeometry(
+      'PLANTÃO',
+      {
+        font: font,
+        size: 800,
+        height: 5,
+        curveSegments: 12,
+        bevelEnabled: true,
+        bevelThickness: 10,
+        bevelSize: 8,
+        bevelOffset: 0,
+        bevelSegments: 5
+      },
+      undefined,
+      error => {
+        console.log('erro na font');
+      }
+    );
     scene.add(geometry);
   });
 }
@@ -113,7 +120,6 @@ function loadText() {
 function loadGlobo() {
   const loader = new FBXLoader();
   loader.load(fbxGlobo, fbx => {
-    console.log('globo:', fbx);
     globo = fbx;
     globo.scale.set(0.5, 0.5, 0.5);
     group.add(globo); //, new THREE.PointLight(0xbb00ff));
@@ -160,7 +166,6 @@ function loadGolbats() {
       golbat.scale.set(0.05, 0.05, 0.05);
       golbat.rotation.set(3.2, 0.5, 1.6);
       golbat.position.set(...pos);
-      console.log(golbat);
       group.add(golbat);
     });
 
