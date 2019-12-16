@@ -39,6 +39,7 @@ let flag = true;
   loadGlobo();
   loadGolbats();
   loadZubats();
+  loadText();
 
   flag = true;
   initEvents();
@@ -58,6 +59,26 @@ function setLight() {
   dirLight.position.set(0, 0, 900);
   dirLight.target = group;
   scene.add(dirLight, light, obj);
+}
+
+function loadText(){
+  var loader = new THREE.FontLoader();
+  
+  loader.load( './three/examples/fonts/gentilis_regular.typeface.json', function ( font ) {
+  
+    var geometry = new THREE.TextBufferGeometry( 'Hello three.js!', {
+      font: font,
+      size: 800,
+      height: 5,
+      curveSegments: 12,
+      bevelEnabled: true,
+      bevelThickness: 10,
+      bevelSize: 8,
+      bevelOffset: 0,
+      bevelSegments: 5
+    } );
+    scene.add(geometry);
+  } );
 }
 
 function loadGlobo() {
