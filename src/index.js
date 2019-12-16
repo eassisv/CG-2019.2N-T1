@@ -18,7 +18,7 @@ let golbat, zubat;
     1000
   );
   camera.position.z = 390;
-  camera.position.x = -70
+  camera.position.x = -70;
   camera.rotation.y = -1.4;
   scene.add(camera);
 
@@ -81,10 +81,10 @@ function loadGolbats() {
   const loader = new FBXLoader();
   loader.load(fbxGolbat, fbx => {
     golbat = fbx;
-    golbat.scale.set(0.02, 0.02, 0.02);
-    golbat.position.z = 100;
-
+    golbat.scale.set(0.05, 0.05, 0.05);
     golbat.rotation.set(0, 0, 1.6);
+
+    golbat.position.set(0, 0, 220);
 
     group.add(golbat);
   });
