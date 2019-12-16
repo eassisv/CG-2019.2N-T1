@@ -3,13 +3,36 @@ import {FBXLoader} from 'three/examples/jsm/loaders/FBXLoader';
 import fbxGlobo from '../assets/models/globo/globo.fbx';
 import fbxPokeball from '../assets/models/pokeball/pokeball.fbx';
 import fbxGolbat from '../assets/models/golbat/golbat.fbx';
-import fbxZubat from '../assets/models/zubat/zubat.fbx';
 import fontGentilis from 'three/examples/fonts/gentilis_regular.typeface.json';
 
 let scene, camera, renderer, light;
 let pokeball, globo, group;
-let golbat, zubat;
+let golbats, zubats;
 let flag = true;
+
+const golbatsPositions = [
+  [-60, 0, 220],
+  [40, 0, 210],
+  [140, 0, 200],
+  [240, 0, 190],
+  [-10, 45, 215],
+  [90, 45, 205],
+  [190, 45, 195],
+  [-10, -45, 215],
+  [90, -45, 205],
+  [190, -45, 195],
+  [-60, 45, 220],
+  [40, 45, 210],
+  [140, 45, 210],
+  [240, 45, 190],
+  [-60, -45, 220],
+  [40, -45, 210],
+  [140, -45, 200],
+  [240, -45, 190],
+  [-10, 0, 215],
+  [90, 0, 205],
+  [190, 0, 195]
+];
 
 (() => {
   scene = new THREE.Scene();
@@ -31,20 +54,24 @@ let flag = true;
   document.body.appendChild(renderer.domElement);
   window.addEventListener('resize', onWindowResize);
 
+  golbats = new THREE.Group();
+  zubats = new THREE.Group();
   group = new THREE.Group();
   group.position.z = 200;
   group.rotation.y = 0.3;
+  scene.add(golbats);
+  scene.add(zubats);
   scene.add(group);
   setLight();
   loadPokeball();
   loadGlobo();
   loadGolbats();
-  loadZubats();
   loadText();
   loadMusic();
 
   flag = true;
   initEvents();
+  animate();
 })();
 
 function setLight() {
@@ -63,11 +90,12 @@ function setLight() {
   scene.add(dirLight, light, obj);
 }
 
-function loadText(){
+function loadText() {
   var loader = new THREE.FontLoader();
-  loader.load( './three/examples/fonts/gentilis_regular.typeface.json', function ( font ) {
-  
-    var geometry = new THREE.TextBufferGeometry( 'Plantão', {
+  loader.load('three/examples/fonts/gentilis_regular.typeface.json', function(
+    font
+  ) {
+    var geometry = new THREE.TextBufferGeometry('Plantão', {
       font: font,
       size: 800,
       height: 5,
@@ -77,9 +105,9 @@ function loadText(){
       bevelSize: 8,
       bevelOffset: 0,
       bevelSegments: 5
-    } );
+    });
     scene.add(geometry);
-  } );
+  });
 }
 
 function loadGlobo() {
@@ -107,94 +135,36 @@ function loadPokeball() {
     }
   );
 }
-function loadMusic(){
-  var listener = new THREE.AudioListener();
-  camera.add( listener );
 
-  var sound = new THREE.Audio( listener );
+function loadMusic() {
+  var listener = new THREE.AudioListener();
+  camera.add(listener);
+
+  var sound = new THREE.Audio(listener);
 
   var audioLoader = new THREE.AudioLoader();
-  audioLoader.load( 'sounds/ambient.ogg', function( buffer ) {
-    sound.setBuffer( buffer );
-    sound.setLoop( true );
-    sound.setVolume( 0.5 );
+  audioLoader.load('sounds/ambient.ogg', function(buffer) {
+    sound.setBuffer(buffer);
+    sound.setLoop(true);
+    sound.setVolume(0.5);
     sound.play();
   });
   scene.add(audioLoader);
 }
 
-const golbatsPositions = [
-  [-60, 0, 220],
-  [40, 0, 210],
-  [140, 0, 200],
-  [240, 0, 190]
-];
-
 function loadGolbats() {
   const loader = new FBXLoader();
   loader.load(fbxGolbat, fbx => {
-    golbat = fbx;
-    golbat.scale.set(0.05, 0.05, 0.05);
-    golbat.rotation.set(3.2, 0, 1.6);
+    golbatsPositions.forEach(pos => {
+      const golbat = fbx.clone();
+      golbat.scale.set(0.05, 0.05, 0.05);
+      golbat.rotation.set(3.2, 0.5, 1.6);
+      golbat.position.set(...pos);
+      console.log(golbat);
+      group.add(golbat);
+    });
 
-    let oto;
-    golbat.position.set(-60, 0, 220);
-    oto = golbat.clone();
-    oto.position.set(-10, 0, 215);
-    group.add(oto);
-
-    oto = golbat.clone();
-    oto.position.set(40, 0, 210);
-    group.add(oto);
-
-    oto = golbat.clone();
-    oto.position.set(90, 0, 205);
-    group.add(oto);
-
-    oto = golbat.clone();
-    oto.position.set(140, 0, 200);
-    group.add(oto);
-    oto = golbat.clone();
-    oto.position.set(190, 0, 195);
-    group.add(oto);
-
-    oto = golbat.clone();
-    oto.position.set(240, 0, 190);
-    group.add(oto);
-    golbat.rotation.set(3.2, 0.5, 1.6);
-
-    golbat.position.set(-60, 0, 220);
-
-    group.add(golbat);
-  });
-}
-
-const zubatPositions = [
-  [-60, 45, 220],
-  [40, 45, 210],
-  [140, 45, 20],
-  [240, 45, 190],
-  [-60, -45, 220],
-  [40, -45, 210],
-  [140, -45, 200],
-  [240, -45, 190],
-  [-10, 0, 215],
-  [90, 0, 205],
-  [190, 0, 195]
-];
-
-function loadZubats() {
-  const loader = new FBXLoader();
-  loader.load(fbxZubat, fbx => {
-    zubat = fbx;
-    zubat.scale.set(0.05, 0.05, 0.05);
-    zubat.rotation.set(3.2, 0.5, 1.6);
-
-    zubat.position.set(-60, -45, 215);
-
-    group.add(zubat);
-
-    animate();
+    group.add(golbats);
   });
 }
 
@@ -217,7 +187,7 @@ function initEvents() {
 
 function render() {
   if (flag && group.rotation.y > -1) {
-    group.rotation.y -= 0.01;
+    group.rotation.y -= 0.005;
   } else {
     flag = false;
     if (group.rotation.y < 0) group.rotation.y += 0.03;
