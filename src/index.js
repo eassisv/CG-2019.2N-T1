@@ -41,6 +41,7 @@ let flag = true;
   loadGolbats();
   loadZubats();
   loadText();
+  loadMusic();
 
   flag = true;
   initEvents();
@@ -105,6 +106,21 @@ function loadPokeball() {
       console.log(error);
     }
   );
+}
+function loadMusic(){
+  var listener = new THREE.AudioListener();
+  camera.add( listener );
+
+  var sound = new THREE.Audio( listener );
+
+  var audioLoader = new THREE.AudioLoader();
+  audioLoader.load( 'sounds/ambient.ogg', function( buffer ) {
+    sound.setBuffer( buffer );
+    sound.setLoop( true );
+    sound.setVolume( 0.5 );
+    sound.play();
+  });
+  scene.add(audioLoader);
 }
 
 const golbatsPositions = [
