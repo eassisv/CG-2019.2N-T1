@@ -2,9 +2,12 @@ import * as THREE from 'three';
 import {FBXLoader} from 'three/examples/jsm/loaders/FBXLoader';
 import fbxGlobo from '../assets/models/globo/globo.fbx';
 import fbxPokeball from '../assets/models/pokeball/pokeball.fbx';
+import fbxGolbat from '../assets/models/golbat/golbat.fbx';
+import fbxZubat from '../assets/models/zubat/zubat.fbx';
 
 let scene, camera, renderer, light;
 let pokeball, globo, group;
+let golbat, zubat;
 
 (() => {
   scene = new THREE.Scene();
@@ -14,7 +17,7 @@ let pokeball, globo, group;
     0.1,
     1000
   );
-  camera.position.z = 900;
+  camera.position.z = 990;
   scene.add(camera);
 
   renderer = new THREE.WebGLRenderer({alpha: 1});
@@ -25,10 +28,13 @@ let pokeball, globo, group;
   window.addEventListener('resize', onWindowResize);
 
   group = new THREE.Group();
+  group.position.z = 200;
   scene.add(group);
   setLight();
   loadPokeball();
   loadGlobo();
+  loadGolbats();
+  loadZubats();
 
   initEvents();
   animate();
@@ -46,8 +52,7 @@ function loadGlobo() {
   loader.load(fbxGlobo, fbx => {
     console.log('globo:', fbx);
     globo = fbx;
-    globo.scale.set(0.4, 0.4, 0.4);
-    globo.position.z = 200;
+    globo.scale.set(0.5, 0.5, 0.5);
     group.add(globo); //, new THREE.PointLight(0xbb00ff));
   });
 }
@@ -58,8 +63,6 @@ function loadPokeball() {
     fbxPokeball,
     fbx => {
       pokeball = fbx;
-      pokeball.scale.set(1.2, 1.2, 1.2);
-      console.log(pokeball);
       group.add(pokeball);
     },
     undefined,
@@ -67,17 +70,26 @@ function loadPokeball() {
       console.log(error);
     }
   );
-  // const mtlLoader = new MTLLoader();
-  // mtlLoader.load(mtlPokemon, mtl => {
-  //   const objLoader = new OBJLoader2();
-  //   const materials = new MtlObjBridge.addMaterialsFromMtlLoader(mtl);
-  //   objLoader.addMaterials(materials);
-  //   objLoader.load(objPokemon, obj => {
-  //     pokeball = obj;
-  //     console.log(pokeball);
-  //     group.add(pokeball);
-  //   });
-  // });
+}
+
+function loadGolbats() {
+  const loader = new FBXLoader();
+  loader.load(fbxGolbat, fbx => {
+    golbat = fbx;
+    golbat.scale.set(0.02, 0.02, 0.02);
+    golbat.position.z = 500;
+    group.add(golbat);
+  });
+}
+
+function loadZubats() {
+  const loader = new FBXLoader();
+  loader.load(fbxZubat, fbx => {
+    zubat = fbx;
+    zubat.scale.set(0.02, 0.02, 0.02);
+    zubat.position.z = 500;
+    group.add(zubat);
+  });
 }
 
 function onWindowResize() {
