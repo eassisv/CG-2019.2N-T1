@@ -38,6 +38,6 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.bin', '.json']
+    extensions: ['.tsx', '.ts', '.js', '.bin']
   }
 };

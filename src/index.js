@@ -4,7 +4,6 @@ import fbxGlobo from '../assets/models/globo/globo.fbx';
 import fbxPokeball from '../assets/models/pokeball/pokeball.fbx';
 import fbxGolbat from '../assets/models/golbat/golbat.fbx';
 import fbxZubat from '../assets/models/zubat/zubat.fbx';
-import fontGentilis from '../assets/fonts/gentilis_regular.typeface';
 
 let scene, camera, renderer, light;
 let pokeball, globo, group;
@@ -18,7 +17,9 @@ let golbat, zubat;
     0.1,
     1000
   );
-  camera.position.z = 990;
+  camera.position.z = 390;
+  camera.position.x = -70
+  camera.rotation.y = -1.4;
   scene.add(camera);
 
   renderer = new THREE.WebGLRenderer({alpha: 1});
@@ -30,14 +31,14 @@ let golbat, zubat;
 
   group = new THREE.Group();
   group.position.z = 200;
+  group.rotation.y = 0.3;
   scene.add(group);
   setLight();
-  // loadPokeball();
-  // loadGlobo();
+  loadPokeball();
+  loadGlobo();
   loadGolbats();
-  // loadZubats();
+  loadZubats();
 
-  loadText();
 
   initEvents();
   animate();
@@ -45,7 +46,7 @@ let golbat, zubat;
 
 function setLight() {
   light = new THREE.DirectionalLight(0xffffff, 1);
-  light.position.set(camera.position.x, camera.position.y, camera.position.z);
+  light.position.set(0, 0, 900);
   light.target = group;
   scene.add(light);
 }
@@ -66,6 +67,7 @@ function loadPokeball() {
     fbxPokeball,
     fbx => {
       pokeball = fbx;
+      pokeball.position.z = 40
       group.add(pokeball);
     },
     undefined,
@@ -79,8 +81,8 @@ function loadGolbats() {
   const loader = new FBXLoader();
   loader.load(fbxGolbat, fbx => {
     golbat = fbx;
-    golbat.scale.set(0.1, 0.1, 0.1);
-    golbat.position.z = 600;
+    golbat.scale.set(0.02, 0.02, 0.02);
+    golbat.position.z = 100;
 
     golbat.rotation.set(0, 0, 1.6);
 
@@ -98,26 +100,6 @@ function loadZubats() {
   });
 }
 
-function loadText() {
-  const loader = new THREE.FontLoader();
-
-  loader.load(fontGentilis,  font => {
-    const geometry = new THREE.TextGeometry( 'Hello three.js!', {
-      font: font,
-      size: 80,
-      height: 5,
-      curveSegments: 12,
-      bevelEnabled: true,
-      bevelThickness: 10,
-      bevelSize: 8,
-      bevelOffset: 0,
-      bevelSegments: 5,
-    });
-    scene.add(geometry);
-  })
-}
-
-function loadText() {}
 
 function onWindowResize() {
   camera.aspect = window.innerWidth / window.innerHeight;
@@ -137,7 +119,7 @@ function initEvents() {
 }
 
 function render() {
-  // group.rotation.y += 0.05;
+  // group.rotation.y -= 0.05;
 }
 
 function animate() {
