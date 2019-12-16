@@ -143,7 +143,7 @@ function loadMusic() {
   var sound = new THREE.Audio(listener);
 
   var audioLoader = new THREE.AudioLoader();
-  audioLoader.load('sounds/ambient.ogg', function(buffer) {
+  audioLoader.load('assets/sounds/sound.ogg', function(buffer) {
     sound.setBuffer(buffer);
     sound.setLoop(true);
     sound.setVolume(0.5);
