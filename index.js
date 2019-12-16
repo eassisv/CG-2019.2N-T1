@@ -38,9 +38,7 @@ const golbatsPositions = [
     0.1,
     1000
   );
-  camera.position.z = 390;
-  camera.position.x = -70;
-  camera.rotation.y = -1.4;
+  initCameraPosition();
   scene.add(camera);
 
   renderer = new THREE.WebGLRenderer({alpha: 1});
@@ -51,19 +49,34 @@ const golbatsPositions = [
   window.addEventListener('resize', onWindowResize);
 
   group = new THREE.Group();
-  group.position.z = 200;
-  group.rotation.y = 0.3;
+  initGroupPosition();
   scene.add(group);
   setLight();
   loadPokeball();
   loadGlobo();
-  loadGolbats();
   loadText();
-  loadSound();
+  loadGolbats();
 
   flag = true;
   initEvents();
 })();
+
+function initCameraPosition() {
+  camera.position.z = 390;
+  camera.position.x = -70;
+  camera.rotation.y = -1.4;
+}
+
+function initGroupPosition() {
+  group.position.z = 200;
+  group.rotation.y = 0.3;
+}
+
+function reinitGolbats() {
+  golbats.forEach(golbat => {
+    golbat.visible = true;
+  });
+}
 
 function setLight() {
   light = new THREE.DirectionalLight(0xffffff, 0.8);
@@ -82,19 +95,17 @@ function setLight() {
 }
 
 function loadSound() {
-  var listener = new THREE.AudioListener();
-  camera.add(listener);
+  const listener = new THREE.AudioListener();
 
-  var sound = new THREE.Audio(listener);
+  const sound = new THREE.Audio(listener);
 
-  var audioLoader = new THREE.AudioLoader();
-  audioLoader.load('.assets/sounds/sound.ogg', function(buffer) {
+  const audioLoader = new THREE.AudioLoader();
+  audioLoader.load('./assets/sounds/sound.ogg', function(buffer) {
     sound.setBuffer(buffer);
-    sound.setLoop(true);
-    sound.setVolume(2);
+    sound.setLoop(false);
+    sound.setVolume(1);
     sound.play();
   });
-  scene.add(audioLoader);
 }
 
 function loadText() {
@@ -153,6 +164,7 @@ function loadGolbats() {
       golbats.push(golbat);
     });
   });
+  loadSound();
   animate();
 }
 
@@ -160,6 +172,14 @@ function onWindowResize() {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+function reinit() {
+  flag = true;
+  initCameraPosition();
+  initGroupPosition();
+  reinitGolbats();
+  loadSound();
 }
 
 function initEvents() {
@@ -171,11 +191,16 @@ function initEvents() {
     },
     false
   );
+  document.addEventListener('keypress', e => {
+    if (e.key === 'r') {
+      reinit();
+    }
+  });
 }
 
 function render() {
   if (flag && group.rotation.y > -1) {
-    group.rotation.y -= 0.003;
+    group.rotation.y -= 0.004;
   } else {
     flag = false;
 
