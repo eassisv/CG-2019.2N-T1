@@ -92,6 +92,7 @@ const golbatsPositions = [
   [140, 0, 200],
   [240, 0, 190]
 ];
+
 function loadGolbats() {
   const loader = new FBXLoader();
   loader.load(fbxGolbat, fbx => {
@@ -132,12 +133,19 @@ function loadGolbats() {
 }
 
 const zubatPositions = [
-  [-60, 45, 215],
-  [-60, -45, 225],
+  [-60, 45, 220],
+  [40, 45, 210],
+  [140, 45, 20],
+  [240, 45, 190],
+  [-60, -45, 220],
+  [40, -45, 210],
+  [140, -45, 200],
+  [240, -45, 190],
   [-10, 0, 215],
   [90, 0, 205],
   [190, 0, 195]
 ];
+
 function loadZubats() {
   const loader = new FBXLoader();
   loader.load(fbxZubat, fbx => {
