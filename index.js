@@ -3,7 +3,7 @@ import {FBXLoader} from './three.js-master/examples/jsm/loaders/FBXLoader.js';
 
 let scene, camera, renderer, light;
 let pokeball, globo, group;
-let golbats, zubats;
+let golbats = [];
 let flag = true;
 
 const golbatsPositions = [
@@ -50,7 +50,6 @@ const golbatsPositions = [
   document.body.appendChild(renderer.domElement);
   window.addEventListener('resize', onWindowResize);
 
-  golbats = new THREE.Group();
   group = new THREE.Group();
   group.position.z = 200;
   group.rotation.y = 0.3;
@@ -60,11 +59,9 @@ const golbatsPositions = [
   loadGlobo();
   loadGolbats();
   loadText();
-  // loadMusic();
 
   flag = true;
   initEvents();
-  animate();
 })();
 
 function setLight() {
@@ -120,18 +117,11 @@ function loadGlobo() {
 
 function loadPokeball() {
   const loader = new FBXLoader();
-  loader.load(
-    './assets/models/pokeball/pokeball.fbx',
-    fbx => {
-      pokeball = fbx;
-      pokeball.position.z = 40;
-      group.add(pokeball);
-    },
-    undefined,
-    error => {
-      console.log(error);
-    }
-  );
+  loader.load('./assets/models/pokeball/pokeball.fbx', fbx => {
+    pokeball = fbx;
+    pokeball.position.z = 40;
+    group.add(pokeball);
+  });
 }
 
 function loadGolbats() {
@@ -143,10 +133,10 @@ function loadGolbats() {
       golbat.rotation.set(3.2, 0.5, 1.6);
       golbat.position.set(...pos);
       group.add(golbat);
+      golbats.push(golbat);
     });
-
-    group.add(golbats);
   });
+  animate();
 }
 
 function onWindowResize() {
@@ -168,13 +158,13 @@ function initEvents() {
 
 function render() {
   if (flag && group.rotation.y > -1) {
-    group.rotation.y -= 0.5;
+    group.rotation.y -= 0.003;
   } else {
     flag = false;
-    console.log(golbats.visible);
-    if (golbats.visible) {
-      golbats.visible = false;
-    }
+
+    golbats.forEach(child => {
+      child.visible = false;
+    });
     if (group.rotation.y < 0) group.rotation.y += 0.03;
     if (camera.rotation.y < 0) {
       camera.rotation.y += 0.02;
