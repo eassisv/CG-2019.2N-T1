@@ -1,5 +1,4 @@
 const path = require('path');
-const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -12,7 +11,6 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
-    writeToDisk: true,
     filename: 'js/main.js',
     publicPath: '/',
     hot: true,
@@ -34,7 +32,6 @@ module.exports = {
       }
     ]
   },
-  // plugins: [new CopyPlugin([{from: './assets/models', to: './assets/models'}])],
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.bin']
   }

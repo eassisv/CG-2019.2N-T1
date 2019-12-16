@@ -10,7 +10,6 @@
     "build": "webpack"
   },
   "devDependencies": {
-    "copy-webpack-plugin": "^5.1.1",
     "eslint": "^6.7.2",
     "file-loader": "^5.0.2",
     "typescript": "^3.7.3",
