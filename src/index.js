@@ -1,16 +1,12 @@
 import * as THREE from 'three';
-import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader';
 import {FBXLoader} from 'three/examples/jsm/loaders/FBXLoader';
-import {TGALoader} from 'three/examples/jsm/loaders/TGALoader';
-import glbGlobo from '../assets/models/globo/scene.glb';
-import fbxPokeball from '../assets/models/pokeball-fbx/pokeball.fbx';
+import fbxGlobo from '../assets/models/globo/globo.fbx';
+import fbxPokeball from '../assets/models/pokeball/pokeball.fbx';
 
 let scene, camera, renderer, light;
 let pokeball, globo, group;
 
 (() => {
-  THREE.Loader.Handlers.add(/\.tga$/i, new TGALoader());
-
   scene = new THREE.Scene();
   camera = new THREE.PerspectiveCamera(
     75,
@@ -32,37 +28,56 @@ let pokeball, globo, group;
   scene.add(group);
   setLight();
   loadPokeball();
-  // loadGlobo();
+  loadGlobo();
 
   initEvents();
   animate();
 })();
 
 function setLight() {
-  light = new THREE.DirectionalLight(0xffffff, 2.5);
+  light = new THREE.DirectionalLight(0xffffff, 1);
   light.position.set(camera.position.x, camera.position.y, camera.position.z);
   light.target = group;
   scene.add(light);
 }
 
 function loadGlobo() {
-  const loader = new GLTFLoader();
-  loader.load(glbGlobo, gltf => {
-    console.log('globo:', gltf);
-    globo = gltf.scene;
-    globo.scale.set(10, 10, 10);
-    group.add(globo, new THREE.PointLight(0xbb00ff));
+  const loader = new FBXLoader();
+  loader.load(fbxGlobo, fbx => {
+    console.log('globo:', fbx);
+    globo = fbx;
+    globo.scale.set(0.4, 0.4, 0.4);
+    globo.position.z = 200;
+    group.add(globo); //, new THREE.PointLight(0xbb00ff));
   });
 }
 
 function loadPokeball() {
   const loader = new FBXLoader();
-  loader.load(fbxPokeball, fbx => {
-    pokeball = fbx;
-    console.log('pokeball:', pokeball);
-    // pokeball.scale.set(0.05, 0.05, 0.05);
-    group.add(pokeball);
-  });
+  loader.load(
+    fbxPokeball,
+    fbx => {
+      pokeball = fbx;
+      pokeball.scale.set(1.2, 1.2, 1.2);
+      console.log(pokeball);
+      group.add(pokeball);
+    },
+    undefined,
+    error => {
+      console.log(error);
+    }
+  );
+  // const mtlLoader = new MTLLoader();
+  // mtlLoader.load(mtlPokemon, mtl => {
+  //   const objLoader = new OBJLoader2();
+  //   const materials = new MtlObjBridge.addMaterialsFromMtlLoader(mtl);
+  //   objLoader.addMaterials(materials);
+  //   objLoader.load(objPokemon, obj => {
+  //     pokeball = obj;
+  //     console.log(pokeball);
+  //     group.add(pokeball);
+  //   });
+  // });
 }
 
 function onWindowResize() {
