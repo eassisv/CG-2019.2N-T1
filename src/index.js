@@ -34,6 +34,11 @@ let golbat, zubat;
   loadPokeball();
   loadGlobo();
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  loadGolbats();
+  loadZubats();
+>>>>>>> 2065581ee73751a039ecb2d641b90f1183121c3a
   loadText();
 =======
   loadGolbats();
@@ -75,10 +80,31 @@ function loadPokeball() {
     }
   );
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+}
 
-  function loadText(){
-    
-  }
+function loadGolbats() {
+  const loader = new FBXLoader();
+  loader.load(fbxGolbat, fbx => {
+    golbat = fbx;
+    golbat.scale.set(0.02, 0.02, 0.02);
+    golbat.position.z = 500;
+    group.add(golbat);
+  });
+}
+
+function loadZubats() {
+  const loader = new FBXLoader();
+  loader.load(fbxZubat, fbx => {
+    zubat = fbx;
+    zubat.scale.set(0.02, 0.02, 0.02);
+    zubat.position.z = 500;
+    group.add(zubat);
+  });
+>>>>>>> 2065581ee73751a039ecb2d641b90f1183121c3a
+
+  function loadText() {}
 
   // const mtlLoader = new MTLLoader();
   // mtlLoader.load(mtlPokemon, mtl => {
