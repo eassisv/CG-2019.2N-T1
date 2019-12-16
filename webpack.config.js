@@ -23,6 +23,11 @@ module.exports = {
         exclude: /node_modules/
       },
       {
+        test: /\.json$/,
+        loader: 'json-loader',
+        exclube: /node_modules/
+      },
+      {
         test: /\.(jpg|png|bin|mtl|obj|gltf|glb|fbx)$/,
         loader: 'file-loader',
         options: {
@@ -33,6 +38,6 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.bin']
+    extensions: ['.tsx', '.ts', '.js', '.bin', '.json']
   }
 };
