@@ -99,26 +99,6 @@ function loadZubats() {
 
 function loadText() {}
 
-function loadGolbats() {
-  const loader = new FBXLoader();
-  loader.load(fbxGolbat, fbx => {
-    golbat = fbx;
-    golbat.scale.set(0.02, 0.02, 0.02);
-    golbat.position.z = 500;
-    group.add(golbat);
-  });
-}
-
-function loadZubats() {
-  const loader = new FBXLoader();
-  loader.load(fbxZubat, fbx => {
-    zubat = fbx;
-    zubat.scale.set(0.02, 0.02, 0.02);
-    zubat.position.z = 500;
-    group.add(zubat);
-  });
-}
-
 function onWindowResize() {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
