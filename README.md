@@ -11,3 +11,5 @@
 
 ## Instruções
  - Para reiniciar a vinheta, pressione R.
+ - Para girar a pokebola, pressione e.
+ - Para girar os Golbats, pressione w.
